@@ -26,16 +26,27 @@ fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 sns.heatmap(df.corr(), annot=True, cmap='coolwarm', fmt=".2f", ax=axes[0, 0])
 axes[0, 0].set_title('Figure 1: Feature Correlation Heatmap', fontsize=12, fontweight='bold')
 
+# This code creates our first graph, the correlation heatmap.
+# df.corr() calculates the correlation between the variables, 
+# and sns.heatmap() displays it as a heatmap
+
 # Chart 2: Angle of Attack vs Air Disruption
 sns.scatterplot(data=df, x='alpha', y='delta', hue='U_infinity', palette='viridis', ax=axes[0, 1])
 axes[0, 1].set_title('Figure 2: Angle of Attack (alpha) vs Air Disruption (delta)', fontsize=12, fontweight='bold')
 axes[0, 1].set_xlabel('Angle of Attack (deg)')
 axes[0, 1].set_ylabel('Displacement Thickness delta (m)')
 
+# This code creates our second graph.
+# We use a scatter plot to show the relationship between angle of attack, alpha, and displacement thickness, delta. 
+# The different colours represent different air velocities
+
 # Chart 3: Distribution of SSPL
 sns.histplot(df['SSPL'], kde=True, color='crimson', ax=axes[1, 0])
 axes[1, 0].set_title('Figure 3: Distribution of Sound Pressure Level (SSPL)', fontsize=12, fontweight='bold')
 axes[1, 0].set_xlabel('Sound Pressure Level (dB)')
+
+# This code creates our third graph. It is a histogram showing how the SSPL values are distributed in our dataset.
+# It helps us understand the range and frequency of sound pressure levels.”
 
 # Chart 4: Stealth Envelope Identification
 stealth_mask = (df['delta'] <= 0.0025) & (df['SSPL'] <= 118)
